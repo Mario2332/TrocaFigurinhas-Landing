@@ -29,33 +29,51 @@ const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663161665215/UcLgP
 const features = [
   {
     icon: BookOpen,
-    title: "Álbum Digital",
-    desc: "Gerencie todas as suas figurinhas em um só lugar. Marque as que tem, as repetidas e as que faltam.",
+    title: "Álbum Digital Completo",
+    desc: "Gerencie todas as suas figurinhas em um só lugar. Marque as que tem, as repetidas e as que faltam. Acompanhe seu progresso em tempo real com porcentagem de conclusão por seção e geral.",
+    highlight: "Progresso visual por seção",
   },
   {
     icon: Repeat,
     title: "Trocas Inteligentes",
-    desc: "Encontre automaticamente quem tem as figurinhas que você precisa e quer as que você tem sobrando.",
+    desc: "O algoritmo encontra automaticamente os melhores matches: quem tem o que você precisa e quer o que você tem sobrando. Proponha trocas com um toque e negocie pelo chat integrado.",
+    highlight: "Match automático",
+  },
+  {
+    icon: Users,
+    title: "Squads de até 10 Amigos",
+    desc: "Crie um grupo com seus amigos colecionadores. Vejam os álbuns uns dos outros, troquem com prioridade e completem a coleção juntos. Perfeito para família e escola!",
+    highlight: "Trocas prioritárias",
   },
   {
     icon: MapPin,
-    title: "Pontos de Troca",
-    desc: "Descubra lojas e eventos perto de você onde rola troca presencial de figurinhas.",
+    title: "Mapa de Trocas ao Vivo",
+    desc: "Veja no mapa quem está perto de você e quer trocar presencialmente. Descubra lojas parceiras, pontos de troca oficiais e eventos de figurinhas na sua cidade.",
+    highlight: "Geolocalização em tempo real",
   },
   {
     icon: Trophy,
-    title: "Rankings & Missões",
-    desc: "Ganhe XP, suba de nível e dispute rankings com amigos e colecionadores do Brasil inteiro.",
+    title: "Rankings, Missões & Sorteios",
+    desc: "Complete missões diárias e semanais para ganhar moedas e XP. Suba de nível, desbloqueie conquistas exclusivas e concorra a prêmios reais nos sorteios semanais.",
+    highlight: "Prêmios reais",
   },
   {
     icon: Zap,
-    title: "Notificações em Tempo Real",
-    desc: "Receba alertas quando alguém aceitar sua troca ou quando uma figurinha rara aparecer.",
+    title: "Copa 2026 ao Vivo",
+    desc: "Acompanhe todos os jogos da Copa em tempo real: placares, tabela de classificação, artilharia e simulador de resultados. Acerte palpites e ganhe moedas extras!",
+    highlight: "Palpites com recompensas",
   },
   {
     icon: Shield,
-    title: "Seguro & Gratuito",
-    desc: "Plataforma segura com verificação de usuários. 100% gratuito para usar.",
+    title: "Seguro & 100% Gratuito",
+    desc: "Plataforma segura com autenticação Google. Sem anúncios invasivos, sem compras obrigatórias. Todas as funcionalidades são gratuitas para sempre.",
+    highlight: "Sem custos escondidos",
+  },
+  {
+    icon: Smartphone,
+    title: "Funciona em Qualquer Dispositivo",
+    desc: "Acesse pelo navegador do celular, tablet ou computador. Instale como app nativo (PWA) para acesso rápido com notificações push. Em breve também na Play Store.",
+    highlight: "PWA + App Nativo",
   },
 ];
 
@@ -178,31 +196,130 @@ export default function Home() {
         <div className="container">
           <FadeIn>
             <div className="text-center max-w-2xl mx-auto mb-16">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo/5 text-indigo text-xs font-semibold mb-4 border border-indigo/10">
+                <Zap size={14} className="text-gold" />
+                Funcionalidades
+              </div>
               <h2 className="text-3xl lg:text-4xl font-bold text-indigo-deep mb-4" style={{ fontFamily: "var(--font-heading)" }}>
                 Tudo que você precisa para completar seu álbum
               </h2>
               <p className="text-muted-foreground text-lg">
-                Ferramentas poderosas para colecionadores sérios e casuais.
+                8 funcionalidades poderosas que transformam a experiência de colecionar figurinhas.
               </p>
             </div>
           </FadeIn>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6">
             {features.map((f, i) => (
-              <FadeIn key={f.title} delay={i * 0.1}>
-                <div className="group p-6 lg:p-8 rounded-xl bg-background border border-border/50 hover:border-indigo/20 hover:shadow-lg hover:shadow-indigo/5 transition-all duration-300">
-                  <div className="w-12 h-12 rounded-lg bg-indigo/5 flex items-center justify-center mb-5 group-hover:bg-indigo/10 transition-colors">
+              <FadeIn key={f.title} delay={i * 0.08}>
+                <div className="group relative p-6 rounded-xl bg-background border border-border/50 hover:border-indigo/20 hover:shadow-lg hover:shadow-indigo/5 transition-all duration-300 h-full">
+                  <div className="w-12 h-12 rounded-lg bg-indigo/5 flex items-center justify-center mb-4 group-hover:bg-indigo/10 transition-colors">
                     <f.icon size={24} className="text-indigo group-hover:text-indigo-light transition-colors" />
                   </div>
-                  <h3 className="text-lg font-semibold text-indigo-deep mb-2" style={{ fontFamily: "var(--font-heading)" }}>
+                  <h3 className="text-base font-semibold text-indigo-deep mb-2" style={{ fontFamily: "var(--font-heading)" }}>
                     {f.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-3">
                     {f.desc}
                   </p>
+                  <span className="inline-flex items-center gap-1 text-xs font-semibold text-gold bg-gold/10 px-2 py-1 rounded-full">
+                    <Star size={10} />
+                    {f.highlight}
+                  </span>
                 </div>
               </FadeIn>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── BENEFITS ── */}
+      <section className="py-20 lg:py-28 bg-background">
+        <div className="container">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <FadeIn direction="right">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold/10 text-gold text-xs font-semibold mb-4 border border-gold/20">
+                  <Trophy size={14} />
+                  Por que escolher o Troca Figurinhas?
+                </div>
+                <h2 className="text-3xl lg:text-4xl font-bold text-indigo-deep mb-6" style={{ fontFamily: "var(--font-heading)" }}>
+                  Mais do que um app — uma comunidade de colecionadores
+                </h2>
+                <div className="space-y-5">
+                  <div className="flex gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0">
+                      <span className="text-lg">⚡</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-indigo-deep mb-1">Complete mais rápido</h4>
+                      <p className="text-sm text-muted-foreground">Nosso algoritmo de match encontra trocas perfeitas em segundos. Usuários completam o álbum 3x mais rápido que trocando sozinhos.</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
+                      <span className="text-lg">🤝</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-indigo-deep mb-1">Troque com confiança</h4>
+                      <p className="text-sm text-muted-foreground">Sistema de reputação, chat integrado e histórico de trocas. Você sabe com quem está negociando.</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center flex-shrink-0">
+                      <span className="text-lg">🏆</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-indigo-deep mb-1">Diversão garantida</h4>
+                      <p className="text-sm text-muted-foreground">Missões diárias, sorteios semanais, rankings e conquistas. Colecionar figurinhas nunca foi tão divertido.</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0">
+                      <span className="text-lg">🌍</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-indigo-deep mb-1">Comunidade nacional</h4>
+                      <p className="text-sm text-muted-foreground">Conecte-se com colecionadores de todo o Brasil. Troque presencialmente ou por correio — sem limites geográficos.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+            <FadeIn direction="left" delay={0.2}>
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-br from-gold/10 to-indigo/10 rounded-3xl blur-2xl -z-10" />
+                <div className="bg-white rounded-2xl shadow-xl p-8 border border-border/50">
+                  <div className="text-center mb-6">
+                    <img src={LOGO_URL} alt="" className="w-16 h-16 mx-auto rounded-2xl shadow-md mb-4" />
+                    <h3 className="text-xl font-bold text-indigo-deep" style={{ fontFamily: "var(--font-heading)" }}>O que nossos usuários dizem</h3>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="bg-indigo/3 rounded-xl p-4">
+                      <div className="flex items-center gap-1 mb-2">
+                        {[1,2,3,4,5].map(s => <Star key={s} size={14} className="text-gold fill-gold" />)}
+                      </div>
+                      <p className="text-sm text-gray-700 italic">"Completei meu álbum em 3 semanas! O sistema de trocas é genial."</p>
+                      <p className="text-xs text-muted-foreground mt-2">— Lucas, São Paulo</p>
+                    </div>
+                    <div className="bg-indigo/3 rounded-xl p-4">
+                      <div className="flex items-center gap-1 mb-2">
+                        {[1,2,3,4,5].map(s => <Star key={s} size={14} className="text-gold fill-gold" />)}
+                      </div>
+                      <p className="text-sm text-gray-700 italic">"Meus filhos adoram as missões e os sorteios. Virou programa de família!"</p>
+                      <p className="text-xs text-muted-foreground mt-2">— Ana, Belo Horizonte</p>
+                    </div>
+                    <div className="bg-indigo/3 rounded-xl p-4">
+                      <div className="flex items-center gap-1 mb-2">
+                        {[1,2,3,4,5].map(s => <Star key={s} size={14} className="text-gold fill-gold" />)}
+                      </div>
+                      <p className="text-sm text-gray-700 italic">"O mapa de trocas mudou tudo. Encontrei 5 colecionadores no meu bairro!"</p>
+                      <p className="text-xs text-muted-foreground mt-2">— Rafael, Curitiba</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
